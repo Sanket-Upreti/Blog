@@ -1,5 +1,6 @@
 <template>
 <div id="addBlog">
+  <h1>Blogify</h1>
   <h2>Add a new Blog Post</h2>
   <form>
     <label >Blog Title</label>
@@ -20,15 +21,23 @@
     </div>
     <label >Author</label>
     <select v-model="author">
-      <option :V-for="author in authors">{{author}}</option>
+      <option v-for="author in authors" :key="author">{{author}}</option>
     </select>
+    <div >
+    <button class="but-1" @click="post">Add the Blog</button>
+    </div>
   </form>
   <div id="preview">
-    <h3>Preview Blog</h3>
-  <p>Blog title: </p>
+    <h3><strong>Preview Blog</strong></h3>
+  <p><strong>Blog title: </strong></p>
   <p>{{title}}</p>
-  <p>Blog Content:</p>
+  <p><strong>Blog Content:</strong></p>
   <p>{{content}}</p>
+  <p><strong>Time of the day: </strong><ul>
+    <li v-for="category in categories" :key="category">{{category}}</li>
+  </ul>
+   </p>
+  <p><strong>Author:</strong> {{author}}</p>
   </div>
 </div>
 </template>
@@ -40,14 +49,25 @@ export default {
       title: "",
       content : "" , 
       categories: [],
-      author: " "
-    },
-    authors= ["Sanket", " Nikesh"]
+      author: "",
+      authors: ["sanket", "george Martin", "William"]
+    }
+  },
+  methods:{
+    post: function(){
+      return alert("Blog Added");
+    }
   }
 }
 </script>
 
 <style scoped>
+h1{
+color: coral;
+font-weight: bolder;
+font-size: 40px;
+}
+
 #addBlog{
   box-sizing: border-box;
   margin: 20px auto;
@@ -89,4 +109,7 @@ margin: 30px 0;
   margin-right: 12px;
 }
 
+.but-1{
+  margin-top: 2%;
+}
 </style>
